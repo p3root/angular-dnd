@@ -1,14 +1,30 @@
-# Angular 2+ Drag-and-Drop
-Angular 2+ Drag-and-Drop without dependencies.
-Based on [Angular 2 Drag-and-Drop by Sergey Akopkokhyants](https://github.com/akserg/ng2-dnd)
+# Angular 2 Drag-and-Drop [![npm version](https://badge.fury.io/js/ng2-dnd.svg)](https://badge.fury.io/js/ng2-dnd) [![npm monthly downloads](https://img.shields.io/npm/dm/ng2-dnd.svg?style=flat-square)](https://www.npmjs.com/package/ng2-dnd)
+Angular 2 Drag-and-Drop without dependencies.
 
+Follow me [![twitter](https://img.shields.io/twitter/follow/akopkokhyants.svg?style=social&label=%20akopkokhyants)](https://twitter.com/akopkokhyants) to be notified about new releases.
+
+[![Build Status](https://travis-ci.org/akserg/ng2-dnd.svg?branch=master)](https://travis-ci.org/akserg/ng2-dnd)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) 
+[![Dependency Status](https://david-dm.org/akserg/ng2-dnd.svg)](https://david-dm.org/akserg/ng2-dnd)
+[![devDependency Status](https://david-dm.org/akserg/ng2-dnd/dev-status.svg)](https://david-dm.org/akserg/ng2-dnd#info=devDependencies)
+[![Known Vulnerabilities](https://snyk.io/test/github/akserg/ng2-dnd/badge.svg)](https://snyk.io/test/github/akserg/ng2-dnd)
 
 _Some of these APIs and Components are not final and are subject to change!_
 
 ## Installation
 ```bash
-npm install ngx-dnd --save
+npm install ng2-dnd --save
 ```
+
+## Demo
+Simple examples using ng2-dnd:
+- with SystemJS in [ng2-systemjs-demo](https://github.com/akserg/ng2-systemjs-demo)
+- with Webpack in [ng2-webpack-demo](https://github.com/akserg/ng2-webpack-demo)
+
+Online demo available [here](http://akserg.github.io/ng2-webpack-demo)
+
+Plunker demo available [here](http://embed.plnkr.co/JbG8Si)
 
 ## Usage
 If you use SystemJS to load your files, you might have to update your config:
@@ -16,7 +32,7 @@ If you use SystemJS to load your files, you might have to update your config:
 ```js
 System.config({
     map: {
-        'ngx-dnd': 'node_modules/ngx-dnd/bundles/ngx-dnd.umd.js'
+        'ng2-dnd': 'node_modules/ng2-dnd/bundles/index.umd.js'
     }
 });
 ```
@@ -29,9 +45,9 @@ Import `DndModule.forRoot()` in the NgModule of your application.
 The `forRoot` method is a convention for modules that provide a singleton service.
 
 ```ts
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from '@angular/core';
-import {DndModule} from 'ngx-dnd';
+import {DndModule} from 'ng2-dnd';
 
 @NgModule({
     imports: [
@@ -582,7 +598,6 @@ class Widget {
 
 # Credits
 - [Francesco Cina](https://github.com/ufoscout)
-- [Sergey Akopkokhyants](https://github.com/akserg)
 
 # License
  [MIT](/LICENSE)
