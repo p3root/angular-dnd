@@ -2,8 +2,7 @@
 // This project is licensed under the terms of the MIT license.
 // https://github.com/gnucoop/ng2-dnd
 
-import {Injectable, ChangeDetectorRef, ViewRef} from '@angular/core';
-import {ElementRef} from '@angular/core';
+import {Injectable, ChangeDetectorRef, ElementRef, ViewRef} from '@angular/core';
 
 import {DragDropConfig, DragImage} from './dnd.config';
 import {DragDropService} from './dnd.service';

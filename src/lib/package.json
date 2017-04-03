@@ -1,7 +1,7 @@
 {
   "name": "ngx-dnd",
   "description": "Angular 2 Drag-and-Drop without dependencies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./bundles/ngx-dnd.umd.js",
   "module": "./ngx-dnd/ngx-dnd.es5.js",
   "es2015": "./ngx-dnd/ngx-dnd.js",
@@ -23,9 +23,6 @@
   "bugs": {
     "url": "https://github.com/gnucoop/ng2-dnd/issues"
   },
-  "main": "bundles/index.umd.js",
-  "module": "index.js",
-  "typings": "index.d.ts",
   "homepage": "https://github.com/gnucoop/ng2-dnd#readme",
   "peerDependencies": {
     "@angular/core": "^4.0.0"

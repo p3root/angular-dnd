@@ -9,6 +9,7 @@ node_modules/*
 npm-debug.log
 *.js
 !config/*
+!gulpfile.js
 !karma.conf.js
 !webpack.config.js
 *.map
@@ -18,6 +19,7 @@ coverage
 *.metadata.json
 bundles
 .vscode
+dist/*
 
 #################
 ## JetBrains
