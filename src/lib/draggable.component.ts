@@ -5,11 +5,11 @@
 import {ChangeDetectorRef} from '@angular/core';
 import {Directive, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 
-import {AbstractComponent} from './abstract.component';
+import {AbstractComponent, AbstractHandleComponent} from './abstract.component';
 import {DragDropConfig, DragImage} from './dnd.config';
 import {DragDropService, DragDropData} from './dnd.service';
 
-@Directive({ selector: '[dnd-draggable]' })
+@Directive({ selector: '[dnd-draggable]', exportAs: 'dndDraggable' })
 export class DraggableComponent extends AbstractComponent {
 
   @Input('dragEnabled') set draggable(value: boolean) {
@@ -78,8 +78,10 @@ export class DraggableComponent extends AbstractComponent {
 
   @Input() cloneItem: boolean;
 
-  constructor(elemRef: ElementRef, dragDropService: DragDropService, config:DragDropConfig,
-    cdr: ChangeDetectorRef) {
+  constructor(
+    elemRef: ElementRef, dragDropService: DragDropService,
+    config: DragDropConfig, cdr: ChangeDetectorRef
+  ) {
 
     super(elemRef, dragDropService, config, cdr);
     this._defaultCursor = this._elem.style.cursor;
@@ -102,5 +104,23 @@ export class DraggableComponent extends AbstractComponent {
     this._elem.classList.remove(this._config.onDragStartClass);
     //
     this.onDragEnd.emit({dragData: this.dragData, mouseEvent: event});
+  }
+}
+
+@Directive({ selector: '[dnd-draggable-handle]' })
+export class DraggableHandleComponent extends AbstractHandleComponent {
+  private _el: HTMLElement;
+
+  @Input() set draggableComponent(component: DraggableComponent) {
+    component.setDragHandle(this._el);
+  }
+
+  constructor(
+    elemRef: ElementRef, dragDropService: DragDropService,
+    config: DragDropConfig, cdr: ChangeDetectorRef
+  ) {
+    super(elemRef, dragDropService, config, cdr);
+
+    this._el = elemRef.nativeElement;
   }
 }

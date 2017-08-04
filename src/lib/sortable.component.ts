@@ -5,7 +5,7 @@
 import {ChangeDetectorRef} from '@angular/core';
 import {Directive, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 
-import {AbstractComponent} from './abstract.component';
+import {AbstractComponent, AbstractHandleComponent} from './abstract.component';
 import {DragDropConfig} from './dnd.config';
 import {DragDropService, DragDropSortableService} from './dnd.service';
 
@@ -66,7 +66,7 @@ export class SortableContainer extends AbstractComponent {
   }
 }
 
-@Directive({ selector: '[dnd-sortable]' })
+@Directive({ selector: '[dnd-sortable]', exportAs: 'dndSortable' })
 export class SortableComponent extends AbstractComponent {
 
   @Input('sortableIndex') index: number;
@@ -196,5 +196,23 @@ export class SortableComponent extends AbstractComponent {
       // Refresh changes in properties of container component
       this._sortableContainer.detectChanges();
     }
+  }
+}
+
+@Directive({ selector: '[dnd-sortable-handle]' })
+export class SortableHandleComponent extends AbstractHandleComponent {
+  private _el: HTMLElement;
+
+  @Input() set sortableComponent(component: SortableComponent) {
+    component.setDragHandle(this._el);
+  }
+
+  constructor(
+    elemRef: ElementRef, dragDropService: DragDropService,
+    config: DragDropConfig, cdr: ChangeDetectorRef
+  ) {
+    super(elemRef, dragDropService, config, cdr);
+
+    this._el = elemRef.nativeElement;
   }
 }
