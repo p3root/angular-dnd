@@ -1,11 +1,11 @@
 var gulp = require('gulp');
 var rollup = require('rollup');
-var tscWrapped = require('@angular/tsc-wrapped');
 var runSequence = require('run-sequence');
 var fs = require('fs');
 var ts = require('typescript');
 var uglify = require('uglify-js');
 var path = require('path');
+var spawn = require('child_process').spawn;
 
 var ROLLUP_GLOBALS = {
   '@angular/core': 'ng.core'
@@ -29,15 +29,15 @@ function createRollupBundle(config) {
   var bundleOptions = {
     context: 'this',
     external: Object.keys(ROLLUP_GLOBALS),
-    entry: config.entry
+    input: config.entry
   }
 
   var writeOptions = {
     moduleId: '',
-    moduleName: 'ngx-dnd',
+    name: 'ngx-dnd',
     banner: LICENSE_BANNER,
     format: config.format,
-    dest: config.dest,
+    file: config.dest,
     globals: ROLLUP_GLOBALS
   }
 
@@ -51,7 +51,27 @@ function createTypingFile() {
 }
 
 gulp.task('build:esm', function() {
-  return tscWrapped.main('src/lib/tsconfig-build.json', {basePath: 'src/lib'});
+  return new Promise((resolve, reject) => {
+    const ngcPath = path.resolve('./node_modules/.bin/ngc');
+    const childProcess = spawn(ngcPath, ['-p', 'src/lib/tsconfig-build.json'], {shell: true});
+
+    // Pipe stdout and stderr from the child process.
+    childProcess.stdout.on('data', function (data) {
+      console.log(`${data}`);
+    });
+    childProcess.stderr.on('data', function (data) {
+      console.error(data);
+    });
+
+    childProcess.on('exit', function (exitCode) {
+      exitCode === 0 ? resolve() : reject();
+    });
+  })
+  .catch((e) => {
+    console.log(e);
+    const error = 'Failed to compile';
+    console.error(error);
+  });
 });
 
 gulp.task('build:fesm2015', function() {
