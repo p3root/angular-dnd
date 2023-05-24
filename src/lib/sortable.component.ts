@@ -87,7 +87,7 @@ export class SortableComponent extends AbstractComponent {
   /**
    * Drag allowed effect
    */
-  @Input('effectAllowed') set effectallowed(value: string) {
+  @Input('effectAllowed') set effectallowed(value: "link" | "all" | "none" | "copy" | "move" | "copyLink" | "copyMove" | "linkMove" | "uninitialized") {
       this.effectAllowed = value;
   }
 

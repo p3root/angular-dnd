@@ -41,17 +41,6 @@ module.exports = {
                 helpers.root('node_modules/@angular')
             ]
         }, {
-            test: /\.ts$/,
-            loader: 'awesome-typescript-loader',
-            query: {
-                // use inline sourcemaps for "karma-remap-coverage" reporter
-                sourceMap: false,
-                inlineSourceMap: true,
-                module: "commonjs",
-                removeComments: true
-            },
-            exclude: [/\.e2e\.ts$/]
-        }, {
             enforce: 'post',
             test: /\.(js|ts)$/,
             loader: 'istanbul-instrumenter-loader',

@@ -40,7 +40,7 @@ export class DraggableComponent extends AbstractComponent {
   /**
    * Drag allowed effect
    */
-  @Input('effectAllowed') set effectallowed(value: string) {
+  @Input('effectAllowed') set effectallowed(value: "none" | "copy" | "copyLink" | "copyMove" | "link" | "linkMove" | "move" | "all" | "uninitialized") {
       this.effectAllowed = value;
   }
 
@@ -51,32 +51,6 @@ export class DraggableComponent extends AbstractComponent {
       this.effectCursor = value;
   }
 
-  /**
-   * Here is the property dragImage you can use:
-   * - The string value as url to the image
-   *   <div class='panel panel-default'
-   *        dnd-draggable [dragEnabled]='true'
-   *        [dragImage]='/images/simpler.png'>
-   * ...
-   * - The DragImage value with Image and offset by x and y:
-   *   let myDragImage: DragImage = new DragImage('/images/simpler1.png', 0, 0);
-   * ...
-   *   <div class='panel panel-default'
-   *        dnd-draggable [dragEnabled]='true'
-   *        [dragImage]='myDragImage'>
-   * ...
-   * - The custom function to return the value of dragImage programmatically:
-   *   <div class='panel panel-default'
-   *        dnd-draggable [dragEnabled]='true'
-   *        [dragImage]='getDragImage(someData)'>
-   * ...
-   *   getDragImage(value:any): string {
-   *     return value ? '/images/simpler1.png' : '/images/simpler2.png'
-   *   }
-   */
-  @Input() dragImage: string | DragImage | Function;
-
-  @Input() cloneItem: boolean;
 
   constructor(
     elemRef: ElementRef, dragDropService: DragDropService,

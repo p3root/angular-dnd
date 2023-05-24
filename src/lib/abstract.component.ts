@@ -39,7 +39,7 @@ export abstract class AbstractComponent {
   /**
    * Drag effect
    */
-  effectAllowed: string;
+  effectAllowed:  "none" | "copy" | "copyLink" | "copyMove" | "link" | "linkMove" | "move" | "all" | "uninitialized";
   /**
    * Drag cursor
    */

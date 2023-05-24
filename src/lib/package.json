@@ -1,7 +1,7 @@
 {
-  "name": "ngx-dnd",
-  "description": "Angular 2 Drag-and-Drop without dependencies",
-  "version": "2.0.0",
+  "name": "p3root-angular-dnd",
+  "description": "Angular 16 Drag-and-Drop without dependencies",
+  "version": "16.0.0",
   "main": "./bundles/ngx-dnd.umd.js",
   "module": "./ngx-dnd/ngx-dnd.es5.js",
   "es2015": "./ngx-dnd/ngx-dnd.js",
@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/gnucoop/ng2-dnd#readme",
   "peerDependencies": {
-    "@angular/core": "^6.0.0"
+    "@angular/core": "^16.0.0"
   }
 }
